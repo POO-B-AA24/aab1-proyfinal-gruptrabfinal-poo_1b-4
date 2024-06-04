@@ -67,7 +67,7 @@ public class Ejecutor {
                     ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(nameArch));
                     Carcel mostrarCarcel = (Carcel) entrada.readObject();//Deserializacion
                     System.out.println(mostrarCarcel);
-
+                    break;
                 case 2:
                     System.out.println("QUE PABELLON DESEAS VER?");
                     System.out.println("[1] -> PABELLON A - ALTA PELIGROSIDAD");

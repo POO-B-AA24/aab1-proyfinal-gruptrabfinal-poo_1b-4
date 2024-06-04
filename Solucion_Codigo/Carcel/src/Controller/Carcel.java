@@ -1,9 +1,10 @@
 package Controller;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Random;
 
-public class Carcel {
+public class Carcel implements Serializable {
 
     // ATRIBUTOS
     private PPL[] listaPPLCompleta;

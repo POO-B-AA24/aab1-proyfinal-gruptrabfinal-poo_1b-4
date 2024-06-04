@@ -2,13 +2,19 @@
 package View;
 //IMPORTAR LAS CLASES NECESARIAS
 import Controller.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Ejecutor {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         //CODIGO NECESARIO
         Scanner tc = new Scanner(System.in);
-        String cedula = null;
+        String cedula = null, nameArch = "serializado.dat";
         int seguir = 0, opcionM1 = 0, opcionM2 = 0, aumPena = 0;
         double prom = 0;
         
@@ -37,6 +43,11 @@ public class Ejecutor {
         carcel.calcularFechaSalida();
         carcel.calcularAniosRestantes();
         carcel.asignarDiasVisita();
+        
+        //SERIALIZAR CARCEL
+        ObjectOutputStream salida  = new ObjectOutputStream(new FileOutputStream(nameArch));//Crear el canal
+        salida.writeObject(carcel); 
+        salida.close();
         //INICIAR LA SALIDA POR CONSOLA
         System.out.println("**************CARCEL DE LOJA****************");
         do{
@@ -52,9 +63,11 @@ public class Ejecutor {
             opcionM1 = tc.nextInt();
             switch(opcionM1){
                 case 1:
-                    System.out.println(carcel.mostrarListaPPL(0));
-                    System.out.println("LA LISTA ANTERIOR CONTIENE LA INFORMACION DE TODOS LOS PPL EN ESTA CARCEL");
-                    break;
+                    //DESERIALIZAR EL ARCHIVO (LEERLO Y TRAERLO A CONSOLA)
+                    ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(nameArch));
+                    Carcel mostrarCarcel = (Carcel) entrada.readObject();//Deserializacion
+                    System.out.println(mostrarCarcel);
+
                 case 2:
                     System.out.println("QUE PABELLON DESEAS VER?");
                     System.out.println("[1] -> PABELLON A - ALTA PELIGROSIDAD");
@@ -133,9 +146,5 @@ public class Ejecutor {
                 System.out.println("***************CARCEL DE LOJA*****************");
                 System.out.println("GRACIAS POR USAR ESTE PROGRAMA, REGRESA PRONTO");
         }while(seguir == 1);
-        /*
-        carcel.promDelitoPabe();
-        carcel.promEdadesPabe();
-        */
     }
 }

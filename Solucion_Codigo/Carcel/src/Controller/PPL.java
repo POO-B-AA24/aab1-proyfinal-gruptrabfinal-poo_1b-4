@@ -1,6 +1,9 @@
 package Controller;
 //CLASE BASE PARA CREAR PPLs
-public class PPL {
+
+import java.io.Serializable;
+
+public class PPL implements Serializable{
     // ATRIBUTOS
     private String nombre;
     private int edad;

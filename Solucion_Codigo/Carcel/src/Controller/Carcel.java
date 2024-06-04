@@ -165,7 +165,7 @@ public class Carcel implements Serializable {
                 cuposDispP_B += 1;
             }
         }
-        sb.append("Hay " + cuposDispP_B + " cupos disponibles en el pabellon B (Media Peligrosidad)");
+        sb.append("Hay " + cuposDispP_B + " cupos disponibles en el pabellon B (Baja Peligrosidad)");
 
         if (haycupos) {
             return sb.toString();

@@ -129,6 +129,7 @@ public class Ejecutor {
                     System.out.println("INGRESA LA IDENTIFICACION DEL PPL QUE DESEAS SANCIONAR");
                     cedula = tc.next();
                     System.out.println(carcel.asignarAgravantes(cedula, aumPena));
+                    break;
                 case 8:
                     System.out.println("****ESTADISTICA - CARCEL LOJA******");
                     prom = carcel.promedioEdades();

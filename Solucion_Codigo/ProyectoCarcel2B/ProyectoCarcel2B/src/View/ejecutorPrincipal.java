@@ -4,7 +4,7 @@ SISTEMA DE GESTION CARCELARIA:
 -JUAN DIEGO GUERRERO CAMARGO
 */
 package View;
-public class ejecutorPrincipal {
+public class EjecutorPrincipal {
     public static void main(String[] args) {
         VentanaPrincipal ejecutar  = new VentanaPrincipal();
         ejecutar.setVisible(true);
